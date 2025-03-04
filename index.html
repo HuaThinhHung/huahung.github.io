@@ -1,25 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV cá nhân của Nguyễn Hữu Trung</title>
+    <title>Giới Thiệu Bản Thân</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .cv-container {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label, input, textarea {
+            width: 80%;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        button {
+            width: 50%;
+        }
+        #preview {
+            margin-top: 10px;
+            max-width: 150px;
+            max-height: 150px;
+            display: none;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Nguyễn Hữu Trung (Design Frontend)</h1>
-    
-    <div class="Họ và Tên">
-        <b>Tên:</b> <i>Hứa Thịnh Hưng</i>
+    <div class="cv-container">
+        <h1>Giới Thiệu Bản Thân</h1>
+        
+        <form>
+            <label for="name"><b>Họ và Tên:</b></label>
+            <input type="text" id="name" name="name" placeholder="Nhập họ và tên của bạn">
+            
+            <label for="dob"><b>Ngày sinh:</b></label>
+            <input type="date" id="dob" name="dob">
+            
+            <label for="address"><b>Địa chỉ:</b></label>
+            <input type="text" id="address" name="address" placeholder="Nhập địa chỉ của bạn">
+            
+            <label for="phone"><b>Điện thoại:</b></label>
+            <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại của bạn">
+            
+            <label for="email"><b>Email:</b></label>
+            <input type="email" id="email" name="email" placeholder="Nhập email của bạn">
+            
+            <label for="bio"><b>Giới thiệu bản thân:</b></label>
+            <textarea id="bio" name="bio" placeholder="Viết một đoạn giới thiệu về bản thân"></textarea>
+
+            <!-- Phần thêm ảnh -->
+            <label for="profile-pic"><b>Ảnh đại diện:</b></label>
+            <input type="file" id="profile-pic" accept="image/*">
+            <img id="preview" src="#" alt="Ảnh đại diện">
+
+            <label for="hobbies"><b>Sở thích:</b></label>
+            <textarea id="hobbies" name="hobbies" placeholder="Nhập sở thích của bạn"></textarea>
+            
+            <label for="skills"><b>Kỹ năng:</b></label>
+            <textarea id="skills" name="skills" placeholder="Nhập các kỹ năng của bạn"></textarea>
+            
+            <label for="experience"><b>Kinh nghiệm làm việc:</b></label>
+            <textarea id="experience" name="experience" placeholder="Nhập kinh nghiệm làm việc của bạn"></textarea>
+            
+            <button type="submit">Lưu thông tin</button>
+        </form>
     </div>
 
-    <div class="Năm Sinh">
-        <b>Ngày sinh:</b> <i>06/01/2003</i>
-    </div>
-
-    <div class="Liên Lạc">
-        <b>Điện thoại:</b> <i>0866865440</i>
-    </div>
-
+    <script>
+        document.getElementById('profile-pic').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('preview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
 </html>
